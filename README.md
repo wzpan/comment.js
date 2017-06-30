@@ -1,2 +1,2 @@
-# github-issues-api
-[Developing] An API for providing JSON contents of Github issues.
+# hexo-github-comment
+[Developing] Snippets for making a comment system based on Github issues.
