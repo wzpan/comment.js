@@ -20,7 +20,7 @@
 // Get recent comment list from github issues
 // TODO
 'use strict';
-var type, username, repo, token, no_comment, go_to_comment, btn_class, comments_target, recent_comments_target, loading_target;
+var type, username, repo, client_id, client_secret, no_comment, go_to_comment, btn_class, comments_target, recent_comments_target, loading_target;
 var github_addr = "https://github.com/";
 var github_api_addr = "https://api.github.com/repos/";
 var oschina_addr = "http://git.oschina.net/";
@@ -53,7 +53,7 @@ var _getComment = function(params, callback) {
         dataType: 'json',
 		cache: false,
 		crossDomain: true,
-		data: token ? `access_token=${token}` : '',
+		data: client_id && client_secret ? `client_id=${client_id}&client_secret=${client_secret}` : '',
         success: function (page_comments) {
             if (!page_comments || page_comments.length <= 0) {
 				(callback && typeof(callback) === "function") && callback(comments);
@@ -84,7 +84,7 @@ var _getCommentsUrl = function(params, callback) {
         dataType: 'json',
 		cache: false,
 		crossDomain: true,
-		data: token ? `access_token=${token}` : '',
+		data: client_id && client_secret ? `client_id=${client_id}&client_secret=${client_secret}` : '',
 		success: function (issues) {
             if (!issues || issues.length <= 0) {
 				(callback && typeof(callback) === "function") && callback("", "");
@@ -126,7 +126,7 @@ var _getIssueByUrl = function(issue_url, callback) {
         dataType: 'json',
 		cache: false,
 		crossDomain: true,
-		data: token ? `access_token=${token}` : '',
+		data: client_id && client_secret ? `client_id=${client_id}&client_secret=${client_secret}` : '',
         success: function (issues) {
             if (!issues || issues.length <= 0) {
 				(callback && typeof(callback) === "function") && callback();
@@ -183,7 +183,7 @@ var _renderComment = function(comment) {
 		<table class="d-block">
 		<tbody class="d-block">
 		<tr class="d-block">
-		<td class="d-block comment-body markdown-body  js-comment-body">
+		<td class="d-block comment-body markdown-body js-comment-body">
 		<p>${content}</p>
 		</td>
 		</tr>
@@ -198,8 +198,8 @@ var _renderRecentComment = function(user, title, content, time, url) {
 	let addr = type == 'github' ? github_addr : oschina_addr;
 	let res = `
 	    <div class="comment-item">
-		  <div class="comment-widget-head">
-		    <div class="comment-widget-avatar">
+		  <div class="row comment-widget-head">
+		    <div class="xl-col-3 comment-widget-avatar">
 		      <a href="${addr}/${user.login}">
 		        <img alt="@${user.login}" class="avatar rounded-1" height="44" src="${user.avatar_url}&amp;s=88" width="44">
 		      </a>
@@ -290,7 +290,7 @@ var _getRecentIssues = function(params, callback) {
         dataType: 'json',
 		cache: false,
 		crossDomain: true,
-		data: token ? `access_token=${token}` : '',
+		data: client_id && client_secret ? `client_id=${client_id}&client_secret=${client_secret}` : '',
         success: function (issues) {
 			if (issues.length > count) {
 				issues = issues.sort('created_at').reverse().slice(0, 5);
@@ -314,7 +314,7 @@ var _getRecentComments = function(params, callback) {
         dataType: 'json',
 		cache: false,
 		crossDomain: true,
-		data: token ? `access_token=${token}` : '',
+		data: client_id && client_secret ? `client_id=${client_id}&client_secret=${client_secret}` : '',
         success: function (comments) {
 			if (comments.length > count) {
 				comments = comments.sort('created_at').reverse().slice(0, 5);
@@ -337,13 +337,10 @@ var CompareDate = function(a, b) {
 }
 
 var getRecentCommentsList = function(params, callback) {
-	let count, user, reversed_token;
-	({type, user, repo, reversed_token, count, recent_comments_target} = params)
+	let count, user;
+	({type, user, repo, client_id, client_secret, count, recent_comments_target} = params)
 	username = user;
 	recent_comments_target = recent_comments_target ? recent_comments_target : '#recent-comments';
-	if (reversed_token) {
-		token = reversed_token.split("").reverse().join("");
-	}
 	var recentList = new Array();
 	// Get recent issues and comments and filter out 10 newest comments
     _getRecentIssues(params, (issues)=>{
@@ -357,13 +354,10 @@ var getRecentCommentsList = function(params, callback) {
 }
 
 var getComments = function(params, callback) {
-    let issue_title, issue_id, user, reversed_token;
-	({type, user, repo, reversed_token, no_comment, go_to_comment, issue_title, issue_id, btn_class, comments_target, loading_target} = params)
+    let issue_title, issue_id, user;
+	({type, user, repo, client_id, client_secret, no_comment, go_to_comment, issue_title, issue_id, btn_class, comments_target, loading_target} = params)
 	comments_target = comments_target ? comments_target : '#comment-thread';
 	username = user;
-	if (reversed_token) {
-		token = reversed_token.split("").reverse().join("");
-	}
 	var spinner = new Spinner(spinOpts);
 	var timeagoInstance = timeago();
     var comments_url;
