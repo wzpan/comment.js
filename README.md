@@ -93,7 +93,7 @@ parameters explaning:
 * `comments_target`: target for displaying comment thread. 
 * `loading_target`(optional): target for displaying loading a spinning indicator.
 * `client_id`(optional but recommended): the client id of your OAuth App.
-* `client_secret`(optional but recommended)': the client secret of your OAuth App.
+* `client_secret`(optional but recommended): the client secret of your OAuth App.
 
 example:
 
