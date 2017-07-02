@@ -15,7 +15,7 @@ Pure JavaScript to make a comment system. Use issue system of code hosting sites
 <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js">/script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
-<script src="comment.js"></script>
+<script src="path_to_comment_js/comment.js"></script>
 ```
 
 ## How to use
@@ -116,7 +116,7 @@ parameters explaning:
 example:
 
 <div id="recent-comments"></div>
-<div style="height:120px"></div
+<div style="height:120px"></div>
 
 ## Enlarge Rate Limiting
 
