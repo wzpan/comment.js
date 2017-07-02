@@ -20,7 +20,11 @@
 // Get recent comment list from github issues
 // TODO
 'use strict';
-var github_user, github_repo, github_token, no_comment, go_to_comment;
+var type, username, repo, token, no_comment, go_to_comment, btn_class, comments_target, recent_comments_target, loading_target;
+var github_addr = "https://github.com";
+var github_api_addr = "https://api.github.com/repos/";
+var oschina_addr = "http://git.oschina.net";
+var oschina_api_addr = "http://git.oschina.net/api/v5/repos/";
 var spinOpts = {
     lines: 13,
     length: 10,
@@ -47,8 +51,9 @@ var _getComment = function(params, callback) {
     $.ajax({
         url: comments_url + '?page=' + page,
         dataType: 'json',
-		data: github_token ? `access_token=${github_token}` : "",
 		cache: false,
+		crossDomain: true,
+		data: token ? `access_token=${token}` : '',
         success: function (page_comments) {
             if (!page_comments || page_comments.length <= 0) {
 				(callback && typeof(callback) === "function") && callback(comments);
@@ -70,14 +75,16 @@ var _getComment = function(params, callback) {
 }
 
 var _getCommentsUrl = function(params, callback) {
-	let page_title, page;
+	let issue_title, page;
 	let found = false;
-	({page_title, page} = params);
+	({issue_title, page} = params);
+	let api_addr = type == 'github' ? github_api_addr : oschina_api_addr;
     $.ajax({
-        url: 'https://api.github.com/repos/' + github_user + '/' + github_repo + '/issues?page=' + page,
+        url: api_addr + username + '/' + repo + '/issues?page=' + page,
         dataType: 'json',
 		cache: false,
-		data: github_token ? `access_token=${github_token}` : "",
+		crossDomain: true,
+		data: token ? `access_token=${token}` : '',
 		success: function (issues) {
             if (!issues || issues.length <= 0) {
 				(callback && typeof(callback) === "function") && callback("", "");
@@ -85,7 +92,7 @@ var _getCommentsUrl = function(params, callback) {
             }
 			issues.forEach(function(issue){
 				// match title
-                if (issue.title && issue.title == page_title) {
+                if (issue.title && issue.title == issue_title) {
                     (callback && typeof(callback) === "function") && callback(issue.comments_url, issue);
 					found = true;
 					return;
@@ -106,7 +113,8 @@ var _getCommentsUrl = function(params, callback) {
 }
 
 var _getIssue = function(issue_id, callback) {
-	let issue_url = 'https://api.github.com/repos/' + github_user + '/' + github_repo + '/issues/' + issue_id;
+	let api_addr = type == 'github' ? github_api_addr : oschina_api_addr;
+	let issue_url = api_addr + username + '/' + repo + '/issues/' + issue_id;
 	_getIssueByUrl(issue_url, (issue)=>{
 		(callback && typeof(callback) === "function") && callback(issue);
 	});
@@ -117,7 +125,8 @@ var _getIssueByUrl = function(issue_url, callback) {
         url: issue_url,
         dataType: 'json',
 		cache: false,
-		data: github_token ? `access_token=${github_token}` : "",
+		crossDomain: true,
+		data: token ? `access_token=${token}` : '',
         success: function (issues) {
             if (!issues || issues.length <= 0) {
 				(callback && typeof(callback) === "function") && callback();
@@ -139,16 +148,17 @@ var _renderComment = function(comment) {
 	let user = comment.user;
     let content = markdown.toHTML(comment.body);
     let ago = timeagoInstance.format(comment.created_at);
-	let current_user = user.login == github_user ? "current-user" : "";
-	let owner = user.login == github_user ? `
-		<span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="${user} is the author of this blog.">
+	let current_user = user.login == username ? "current-user" : "";
+	let addr = type == 'github' ? github_addr : oschina_addr;
+	let owner = user.login == username ? `
+		<span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="${username} is the author of this blog.">
 		Owner
 	</span>
 		` : '';
 	return `
 		<div class="timeline-comment-wrapper js-comment-container">
 		<div class="avatar-parent-child timeline-comment-avatar">
-		<a href="http://github.com/${user.login}">
+		<a href="${addr}/${user.login}">
 		<img alt="@${user.login}" class="avatar rounded-1" height="44" src="${user.avatar_url}&amp;s=88" width="44">
 		</a>
 		</div>
@@ -159,7 +169,7 @@ var _renderComment = function(comment) {
 		<h3 class="timeline-comment-header-text f5 text-normal">
 
 		<strong>
-		<a href="http://github.com/${user.login}" class="author">${user.login}</a>
+		<a href="${addr}/${user.login}" class="author">${user.login}</a>
 		
 	</strong>
 
@@ -185,25 +195,27 @@ var _renderComment = function(comment) {
 }
 
 var _renderRecentComment = function(user, title, content, time, url) {
+	let addr = type == 'github' ? github_addr : oschina_addr;
 	let res = `
 	    <div class="comment-item">
-		<div class="row">
-		  <div class="comment-widget-avatar">
-		    <a href="http://github.com/${user.login}">
-		      <img alt="@${user.login}" class="avatar rounded-1" height="44" src="${user.avatar_url}&amp;s=88" width="44">
-		    </a>
-		</div>
-		<div class="comment-widget-main">
-		<span><a class="comment-widget-user" href="http://github.com/${user.login}" target="_blank">${user.login}</a> </span>
-		  <div class="comment-widget-content">${content}</div>
-		</div>
-		</div>
-		<div class="row comment-widget-meta">
-		  <span class="comment-widget-title">${title}</span> | <span class="comment-widget-date">${time}</span>
-		</div>
+		  <div class="comment-widget-head">
+		    <div class="comment-widget-avatar">
+		      <a href="${addr}/${user.login}">
+		        <img alt="@${user.login}" class="avatar rounded-1" height="44" src="${user.avatar_url}&amp;s=88" width="44">
+		      </a>
+		    </div>
+		    <div class="comment-widget-body">
+		      <span><a class="comment-widget-user" href="${addr}/${user.login}" target="_blank">${user.login}</a> </span>
+		      <div class="comment-widget-content">${content}</div>
+		    </div>
+		  </div>
+		  <br/>
+		  <div class="comment-widget-meta">
+		    <span class="comment-widget-title">${title}</span> | <span class="comment-widget-date">${time}</span>
+		  </div>
 		</div>
 	`
-	$(".recent-comments").append(res);
+	$(recent_comments_target).append(res);
 }
 
 var _renderRecentCommentList = function(comments, count) {
@@ -230,52 +242,55 @@ var _renderRecentCommentList = function(comments, count) {
 }
 
 var _renderHTML = function(params) {
-	let issue, comments, comments_url, page_title;
-	({issue, comments, comments_url, page_title} = params);
-	//let res = `<span class="comment-count">${comments.length} Comments</span>`;
-	let res = '';
+	let issue, comments, comments_url, issue_title;
+	({issue, comments, comments_url, issue_title} = params);
+	let addr = type == 'github' ? github_addr : oschina_addr;
+	let api_addr = type == 'github' ? github_api_addr : oschina_api_addr;
 	if ((!issue || !issue.body || issue.body == "") && (!comments || comments.length <= 0)) {
-		res += `
+		let res = `
 			<div class='js-discussion no-comment'>
 			<span>${no_comment}</span>
 			</div>
 			`
+		$(comments_target).append(res);
 	} else {
-		res += `
+		let res = `
             <div class="discussion-timeline js-quote-selection-container">
             <div class="js-discussion js-socket-channel">
             `
 		if (issue && issue.body && issue.body != '') {
 			res += _renderComment(issue);
-		}		
+		}
 		comments.forEach(function(comment) {
 			res += _renderComment(comment);
 		});
         res += '</div></div>'
+		$(comments_target).append(res);
 	}
 	let issue_url;
 	if (!comments_url) {
-		issue_url = `http://github.com/${github_user}/${github_repo}/issues/new?title=${page_title}#issue_body`;		
+		issue_url = `${addr}/${username}/${repo}/issues/new?title=${issue_title}#issue_body`;		
 	} else {
-		issue_url = comments_url.replace('api.github.com/repos', 'github.com').replace('comments', '') + '#new_comment_field';
+		issue_url = comments_url.replace(api_addr, addr).replace('comments', '') + '#new_comment_field';
 	}
-	res += `
-		<p class="goto-comment pull-right">
-		<a href="${issue_url}" class="btn btn-large btn-primary" target="_blank">${go_to_comment} &rarr;</a>
+	let res = `
+		<p class="goto-comment">
+		<a href="${issue_url}" class="${btn_class}" target="_blank">${go_to_comment}</a>
 		</p>
 	`
-	var commentDIV = document.getElementById('github-comment');
-	commentDIV.innerHTML = res;
+	$(comments_target).append(res);
 }
 
 var _getRecentIssues = function(params, callback) {
 	let count;
-	({github_user, github_repo, github_token, count} = params)
+	({count} = params);
+	let api_addr = type == 'github' ? github_api_addr : oschina_api_addr;
 	$.ajax({
-        url: 'https://api.github.com/repos/' + github_user + '/' + github_repo + '/issues\?per_page\=100',
+        url: api_addr + username + '/' + repo + '/issues\?per_page\=100',
         dataType: 'json',
 		cache: false,
-		data: github_token ? `access_token=${github_token}` : "",
+		crossDomain: true,
+		data: token ? `access_token=${token}` : '',
         success: function (issues) {
 			if (issues.length > count) {
 				issues = issues.sort('created_at').reverse().slice(0, 5);
@@ -292,16 +307,17 @@ var _getRecentIssues = function(params, callback) {
 
 var _getRecentComments = function(params, callback) {
 	let count;
-	({github_user, github_repo, github_token, count} = params)
+	({count} = params);
+	let api_addr = type == 'github' ? github_api_addr : oschina_api_addr;
 	$.ajax({
-        url: 'https://api.github.com/repos/' + github_user + '/' + github_repo + '/issues/comments\?per_page\=100',
+        url: api_addr + username + '/' + repo + '/issues/comments\?per_page\=100',
         dataType: 'json',
 		cache: false,
-		data: github_token ? `access_token=${github_token}` : "",
+		crossDomain: true,
+		data: token ? `access_token=${token}` : '',
         success: function (comments) {
 			if (comments.length > count) {
 				comments = comments.sort('created_at').reverse().slice(0, 5);
-				console.log(comments);
 			}
 			
             (callback && typeof(callback) === "function") && callback(comments);
@@ -321,8 +337,10 @@ var CompareDate = function(a, b) {
 }
 
 var getRecentCommentsList = function(params, callback) {
-	let count;	
-	({github_user, github_repo, github_token, count} = params)
+	let count, user;
+	({type, user, repo, token, count, recent_comments_target} = params)
+	username = user;
+	recent_comments_target = recent_comments_target ? recent_comments_target : '#recent-comments';
 	var recentList = new Array();
 	// Get recent issues and comments and filter out 10 newest comments
     _getRecentIssues(params, (issues)=>{
@@ -336,59 +354,64 @@ var getRecentCommentsList = function(params, callback) {
 }
 
 var getComments = function(params, callback) {
-    let page_title, issue_id;
-	({github_user, github_repo, github_token, no_comment, go_to_comment, page_title, issue_id} = params)
+    let issue_title, issue_id, user;
+	({type, user, repo, token, no_comment, go_to_comment, issue_title, issue_id, btn_class, comments_target, loading_target} = params)
+	comments_target = comments_target ? comments_target : '#comment-thread';
+	username = user;
+	var spinner = new Spinner(spinOpts);
 	var timeagoInstance = timeago();
     var comments_url;
 	var comments = new Array();
-    var spinner = new Spinner(spinOpts);
-	var target = document.getElementById("loading-comment");
-	spinner.spin(target);
+	type = type ? type : 'github';
+	btn_class = btn_class ? btn_class : 'btn';
+	
+	loading_target && spinner.spin($("div"+loading_target).get(0));
     if (!issue_id || issue_id == 'undefined' || typeof(issue_id) == 'undefined') {
-        _getCommentsUrl({page_title: page_title,
+        _getCommentsUrl({issue_title: issue_title,
 						 page: 1}, (comments_url, issue) => {
 							 if (comments_url != '' && comments_url != undefined) {
 								 _getComment({comments: comments,
 											  comments_url: comments_url,
 											  page: 1}
 											 , (comments) => {
-												 spinner.spin();
+												 loading_target && spinner.spin();
 												 _renderHTML({
 													 issue: issue,
 													 comments: comments,
 													 comments_url: comments_url,
-													 page_title: page_title
+													 issue_title: issue_title
 												 }); 
 												 (callback && typeof(callback) === "function") && callback(comments);
 												 return;
 											 });
 							 } else {
-								 spinner.spin();
+								 loading_target && spinner.spin();
 								 _renderHTML({
 									 issue: issue,
 									 comments: comments,
 									 comments_url: comments_url,
-									 page_title: page_title
+									 issue_title: issue_title
 								 });
 								 (callback && typeof(callback) === "function") && callback(comments);
 								 return;
 							 }
 						 });
     } else {
-        let comments_url = 'https://api.github.com/repos/' + github_user + '/' + github_repo + '/issues/' + issue_id + '/comments';
+		let api_addr = type == 'github' ? github_api_addr : oschina_api_addr;
+        let comments_url = api_addr + username + '/' + repo + '/issues/' + issue_id + '/comments';
 		_getIssue(issue_id, (issue) => {
 			_getComment({comments: comments,
 						 comments_url: comments_url,
 						 page: 1}
 						, (comments) => {
-							spinner.spin();
+							loading_target && spinner.spin();
 							_renderHTML({
 								issue: issue,
 								comments: comments,
 								comments_url: comments_url,
-								page_title: page_title
+								issue_title: issue_title
 							});
-							spinner.spin();
+							loading_target && spinner.spin();
 							(callback && typeof(callback) === "function") && callback(comments);
 							return;
 						});
