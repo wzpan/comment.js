@@ -342,7 +342,7 @@ var getRecentCommentsList = function(params, callback) {
 	username = user;
 	recent_comments_target = recent_comments_target ? recent_comments_target : '#recent-comments';
 	if (reversed_token) {
-		token = reversed_token.reverse();
+		token = reversed_token.split("").reverse().join("");
 	}
 	var recentList = new Array();
 	// Get recent issues and comments and filter out 10 newest comments
@@ -362,7 +362,7 @@ var getComments = function(params, callback) {
 	comments_target = comments_target ? comments_target : '#comment-thread';
 	username = user;
 	if (reversed_token) {
-		token = reversed_token.reverse();
+		token = reversed_token.split("").reverse().join("");
 	}
 	var spinner = new Spinner(spinOpts);
 	var timeagoInstance = timeago();
