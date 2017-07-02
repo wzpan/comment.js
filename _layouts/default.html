@@ -18,6 +18,37 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
 		<script src="http://onmw7y6f4.bkt.clouddn.com/comment.min.js"></script>
 
+		<style>
+		 .btn {
+		   position: relative;
+		   display: inline-block;
+		   padding: 6px 12px;
+		   font-size: 14px;
+		   font-weight: 600;
+		   line-height: 20px;
+		   white-space: nowrap;
+		   vertical-align: middle;
+		   cursor: pointer;
+		   -webkit-user-select: none;
+		   -moz-user-select: none;
+		   -ms-user-select: none;
+		   user-select: none;
+		   background-repeat: repeat-x;
+		   background-position: -1px -1px;
+		   background-size: 110% 110%;
+		   border: 1px solid rgba(27,31,35,0.2);
+		   border-radius: 0.25em;
+		   -webkit-appearance: none;
+		   -moz-appearance: none;
+		   appearance: none;
+		 }
+		 a.btn.btn-primary {
+		   color: #fff;
+		   background-color: #28a745;
+		   background-image: -webkit-linear-gradient(270deg, #34d058 0%, #28a745 90%);
+		   background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+		 }
+		</style>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -78,7 +109,7 @@
 			 no_comment: "No comments yet. Press the button and go to comment now!",
 			 go_to_comment: "Go to comment",
 			 issue_id: "1",
-			 btn_class: "btn",
+			 btn_class: "btn btn-primary",
 			 comments_target: "#comment-thread",
 			 loading_target: "#loading-spin"
 		 };
