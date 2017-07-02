@@ -16,6 +16,10 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 * [spin](https://github.com/fgnass/spin.js)
 
 ``` html
+<!-- stylesheet -->
+<link rel="stylesheet" href="path_to_comment_css/comment.css">
+
+<!-- javascripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js">/script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js">/script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
