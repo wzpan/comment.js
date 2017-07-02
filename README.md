@@ -15,6 +15,7 @@ Pure JavaScript to make a comment system. Use issue system of code hosting sites
 <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js">/script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+<script src="comment.js"></script>
 ```
 
 ## How to use
@@ -95,6 +96,7 @@ Secondly, call `getRecentCommentsList()` function to fetch a comment list and di
        type: "github",
 	   user: "wzpan",
 	   repo: "comment.js",
+	   recent_comments_target: "#recent-comments",
 	   count: 5
    };
    getRecentCommentsList(opt);
@@ -106,6 +108,7 @@ parameters explaning:
 * `type`: the site as the backend. Currently supports Github and OSChina.
 * `user`: your site's user account.
 * `repo`: your repo for comment issue tracking.
+* `recent_comments_target`: target for displaying recent comment list.
 * `count`: the maximize length of the comment list.
 * `token`(optional): please refer to [Enlarge Rate Limiting](#enlarge-rate-limiting).
 
