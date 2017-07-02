@@ -127,9 +127,11 @@ To avoid abuse API calling, Github API (and the same as OSChina API) has [Rate L
 
 For security reason, Github doesn't allow to commit tokens to a public repository. So comment.js accepts only the reversed token. It will reverse the token string back before making requests.
 
+A handly way to get a reversed string is entering the following codes in the debug window of your browser:
 
+``` js
+a = "this is a string"
+console.log(a.split("").reverse().join("")) # you will get "gnirts a si siht"
+```
 
-
-
-
-
+Alternatively, if you have installed nodejs, you can type them in your node interactive shell.
