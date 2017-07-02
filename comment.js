@@ -337,10 +337,13 @@ var CompareDate = function(a, b) {
 }
 
 var getRecentCommentsList = function(params, callback) {
-	let count, user;
-	({type, user, repo, token, count, recent_comments_target} = params)
+	let count, user, reversed_token;
+	({type, user, repo, reversed_token, count, recent_comments_target} = params)
 	username = user;
 	recent_comments_target = recent_comments_target ? recent_comments_target : '#recent-comments';
+	if (reversed_token) {
+		token = reversed_token.reverse();
+	}
 	var recentList = new Array();
 	// Get recent issues and comments and filter out 10 newest comments
     _getRecentIssues(params, (issues)=>{
@@ -354,10 +357,13 @@ var getRecentCommentsList = function(params, callback) {
 }
 
 var getComments = function(params, callback) {
-    let issue_title, issue_id, user;
-	({type, user, repo, token, no_comment, go_to_comment, issue_title, issue_id, btn_class, comments_target, loading_target} = params)
+    let issue_title, issue_id, user, reversed_token;
+	({type, user, repo, reversed_token, no_comment, go_to_comment, issue_title, issue_id, btn_class, comments_target, loading_target} = params)
 	comments_target = comments_target ? comments_target : '#comment-thread';
 	username = user;
+	if (reversed_token) {
+		token = reversed_token.reverse();
+	}
 	var spinner = new Spinner(spinOpts);
 	var timeagoInstance = timeago();
     var comments_url;
