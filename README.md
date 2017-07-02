@@ -33,7 +33,7 @@ Create a Github repo for hosting your comments.
 
 In this section I will describe on how to generate a comment thread for a certain page for your site.
 
-Firstlly, Write a div for placing your comment thread.
+Firstly, Write a div for placing your comment thread.
 
 ``` html
 <div id="comment-thread"></div>
@@ -88,7 +88,7 @@ example:
 
 In this section I will describe on how to generate a recent comment list for your site.
 
-Firstlly, Write a div for placing the recent comment list.
+Firstly, Write a div for placing the recent comment list.
 
 ``` html
 <div id="recent-comments"></div>
