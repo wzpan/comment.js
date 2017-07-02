@@ -1,7 +1,7 @@
 comment.js
 ===
 
-Pure JavaScript to make a comment system. Use issue system of code hosting sites like Github/OSChina as the backend. Easily to use. Free for running.
+Pure JavaScript to make a Disqus-like comment system. Use issue system of code hosting sites like Github/OSChina as the backend. Easily to use. Free for running.
 
 ## Demo
 
