@@ -3,6 +3,11 @@ comment.js
 
 Pure JavaScript to make a comment system. Use issue system of code hosting sites like Github/OSChina as the backend. Easily to use. Free for running.
 
+## Demo
+
+* [Demo Comment Thread](http://wzpan.github.io/comment.js#comment-thread)
+* [Demo Recent Comment List](http://wzpan.github.io/comment.js#recent-comments)
+
 ## Dependencies
 
 * [jQuery](https://jquery.com/)
