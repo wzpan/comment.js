@@ -21,9 +21,9 @@
 // TODO
 'use strict';
 var type, username, repo, token, no_comment, go_to_comment, btn_class, comments_target, recent_comments_target, loading_target;
-var github_addr = "https://github.com";
+var github_addr = "https://github.com/";
 var github_api_addr = "https://api.github.com/repos/";
-var oschina_addr = "http://git.oschina.net";
+var oschina_addr = "http://git.oschina.net/";
 var oschina_api_addr = "http://git.oschina.net/api/v5/repos/";
 var spinOpts = {
     lines: 13,
