@@ -77,6 +77,7 @@ example:
 
 <div id="comment-thread"></div>
 <div id="loading-spin"></div>
+<div style="height:80px"/>
 
 ### 3. Recent Comment List
 
@@ -115,6 +116,7 @@ parameters explaning:
 example:
 
 <div id="recent-comments"></div>
+<div style="height:80px"/>
 
 ## Enlarge Rate Limiting
 
