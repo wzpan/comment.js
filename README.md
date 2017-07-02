@@ -125,7 +125,7 @@ To avoid abuse API calling, Github API (and the same as OSChina API) has [Rate L
 * Tips 1: Only "public repo" is needed when selecting OAuth scopes. Do not asking for high-priority scopes that may modify your data.
 * Tips 2: Since it may be unsafe to expose such token to your site, it's a better idea to create a new account that serves the access token so that your own account will not be harmed any way. 
 
-For security reason, Github doesn't allow to commit tokens to a public repository. So comment.js accept only the reversed token. It will reverse the token string back before making requests.
+For security reason, Github doesn't allow to commit tokens to a public repository. So comment.js accepts only the reversed token. It will reverse the token string back before making requests.
 
 
 
