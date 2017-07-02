@@ -1,22 +1,23 @@
 <% if (page.comment){ %>
 <section id="comment">
   <h2 class="title"><%= __('comment') %></h2>
-  <% if (theme.github_comment) { %>  	 
+  <% if (theme.comment_js) { %>  	 
 	 <div id="comment-thread"></div>
 	 <div id="loading-spin"></div>
 	 <script type="text/javascript">
 	   getComments({
-		       type: "<%= theme.github_comment.type %>",
-	           user: "<%= theme.github_comment.user %>",
-	           repo: "<%= theme.github_comment.repo %>",
-			   reversed_token: "<%= theme.github_comment.token %>",
+		       type: "<%= theme.comment_js.type %>",
+	           user: "<%= theme.comment_js.user %>",
+	           repo: "<%= theme.comment_js.repo %>",
+			   client_id: "<%= theme.comment_js.client_id %>",
+			   client_secret: "<%= theme.comment_js.client_secret %>",
 			   no_comment: "<%= __('no_comment') %>",
 			   go_to_comment: "<%= __('go_to_comment') %>",
 			   issue_title: "<%= page.title %>",
 			   issue_id: "<%= page.issue_id %>",
-			   btn_class: "<%= theme.github_comment.btn_class %>" ? "<%= theme.github_comment.btn_class %>" : "btn",
-			   comments_target: "<%= theme.github_comment.comments_target %>" ? "<%= theme.github_comment.comments_target %>" : "#comment-thread",
-			   loading_target: "<%= theme.github_comment.loading_target %>"
+			   btn_class: "<%= theme.comment_js.btn_class %>" ? "<%= theme.comment_js.btn_class %>" : "btn",
+			   comments_target: "<%= theme.comment_js.comments_target %>" ? "<%= theme.comment_js.comments_target %>" : "#comment-thread",
+			   loading_target: "<%= theme.comment_js.loading_target %>"
 			   });
 	 </script>
   <% } else if(theme.duoshuo_shortname) { %>
