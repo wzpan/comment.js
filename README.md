@@ -139,7 +139,7 @@ parameters explaning:
 * `user`: your site's user account.
 * `repo`: your repo for comment issue tracking.
 * `recent_comments_target`: target for displaying recent comment list.
-* `count`: the maximize length of the comment list.
+* `count`(optional): the maximize length of the comment list. Default value is 5.
 * `client_id`(optional but recommended): the client id of your OAuth App.
 * `client_secret`(optional but recommended): the client secret of your OAuth App.
 
