@@ -3,6 +3,8 @@ comment.js
 
 Pure JavaScript to make a Disqus-like comment system. Use issue system of code hosting sites like Github/OSChina as the backend. Easily to use. Free for running.
 
+* [中文文档](http://www.hahack.com/codes/comment-js/#项目介绍)
+
 ## Demo
 
 * [Demo Comment Thread](http://wzpan.github.io/comment.js#comment-thread)
@@ -37,17 +39,20 @@ Create a Github repo for hosting your comments.
 
 ### 2. Register an OAuth App
 
-To avoid abused API calling, Github API (and the same as OSChina API) has [Rate Limiting](https://developer.github.com/v3/#rate-limiting). To enlarge the limit you can [Register a OAuth application](https://github.com/settings/applications/new) . 
+To avoid abused API calling, Github API (and the same as OSChina API) has [Rate Limiting](https://developer.github.com/v3/#rate-limiting). To enlarge the limit you can register an OAuth application.
+
+* [Register a Github OAuth application](https://github.com/settings/applications/new) .
+* [Register an OSChina OAuth application(alternatively)](https://git.oschina.net/oauth/applications/new).
 
 After that, you will get a client id as well as a client secret.
 
-(Tips: When you registeing the App, the Authorization callback URL can be assigned as your site address. For example http://hahack.com )
+> Tips: When you registering the App, the Authorization callback URL can be assigned as your site address. For example http://hahack.com .
 
 ### 3. Comment Thread
 
-In this section I will describe on how to generate a comment thread for a certain page for your site.
+In this section I will describe on how to generate a comment thread of a certain page for your site.
 
-Firstly, Write a div for placing your comment thread.
+Firstly, write a div for placing your comment thread.
 
 ``` html
 <div id="comment-thread"></div>
@@ -87,10 +92,10 @@ parameters explaning:
 * `repo`: your repo for comment issue tracking.
 * `no_comment`: tips when no comments are fetched.
 * `go_to_comment`: text of the "go to comment" button.
-* `issue_title`: the corresponding issue title to your page. Alternatively you can use `issue_id`. 
+* `issue_title`: the corresponding issue title to your page. Alternatively you can use `issue_id`.
 * `issue_id`: the corresponding issue id to your page. Alternatively you can use `issue_title`.
 * `btn_class`: css class name for the "go to comment" button.
-* `comments_target`: target for displaying comment thread. 
+* `comments_target`: target for displaying comment thread.
 * `loading_target`(optional): target for displaying loading a spinning indicator.
 * `client_id`(optional but recommended): the client id of your OAuth App.
 * `client_secret`(optional but recommended): the client secret of your OAuth App.
@@ -142,5 +147,3 @@ example:
 
 <div id="recent-comments"></div>
 <div style="height:120px"></div>
-
-
