@@ -294,7 +294,7 @@
 
 .goto-comment {
   margin-top: 10px;
-  float: right;
+  text-align: right;
 }
 
 #loading-spin {
