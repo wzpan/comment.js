@@ -322,7 +322,7 @@
 }
 
 #recent-comments .comment-widget-avatar {
-  width: 25%;
+  /*width: 25%;*/
   position: relative;
   min-height: 1px;
   padding-left: 15px;
