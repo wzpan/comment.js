@@ -104,7 +104,6 @@ example:
 
 <div id="comment-thread"></div>
 <div id="loading-spin"></div>
-<div style="height:120px"></div>
 
 ### 4. Recent Comment List
 
@@ -146,4 +145,3 @@ parameters explaning:
 example:
 
 <div id="recent-comments"></div>
-<div style="height:120px"></div>
