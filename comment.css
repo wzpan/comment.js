@@ -194,6 +194,7 @@
 
 .d-block {
     display: block !important;
+    border-bottom: 0px;
 }
 
 .markdown-body>*:last-child {
