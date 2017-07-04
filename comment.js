@@ -158,7 +158,7 @@ var _renderComment = function(comment) {
 	return `
 		<div class="timeline-comment-wrapper js-comment-container">
 		<div class="avatar-parent-child timeline-comment-avatar">
-		<a href="${addr}/${user.login}">
+		<a href="${addr}${user.login}">
 		<img alt="@${user.login}" class="avatar rounded-1" height="44" src="${user.avatar_url}&amp;s=88" width="44">
 		</a>
 		</div>
@@ -169,7 +169,7 @@ var _renderComment = function(comment) {
 		<h3 class="timeline-comment-header-text f5 text-normal">
 
 		<strong>
-		<a href="${addr}/${user.login}" class="author">${user.login}</a>
+		<a href="${addr}${user.login}" class="author">${user.login}</a>
 		
 	</strong>
 
@@ -200,12 +200,12 @@ var _renderRecentComment = function(user, title, content, time, url) {
 	    <div class="comment-item">
 		  <div class="row comment-widget-head">
 		    <div class="xl-col-3 comment-widget-avatar">
-		      <a href="${addr}/${user.login}">
+		      <a href="${addr}${user.login}">
 		        <img alt="@${user.login}" class="avatar rounded-1" height="44" src="${user.avatar_url}&amp;s=88" width="44">
 		      </a>
 		    </div>
 		    <div class="comment-widget-body">
-		      <span><a class="comment-widget-user" href="${addr}/${user.login}" target="_blank">${user.login}</a> </span>
+		      <span><a class="comment-widget-user" href="${addr}${user.login}" target="_blank">${user.login}</a> </span>
 		      <div class="comment-widget-content">${content}</div>
 		    </div>
 		  </div>
