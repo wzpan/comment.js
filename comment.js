@@ -192,7 +192,7 @@ var _renderComment = function(comment) {
         `
 }
 
-var _renderRecentComment = function(user, title, content, time, url) {
+var _renderRecentComment = function(user, title, content, time, url, callback) {
     let addr = type == 'github' ? github_addr : oschina_addr;
     let res = `
         <div class="comment-item">
@@ -202,40 +202,63 @@ var _renderRecentComment = function(user, title, content, time, url) {
                 <img alt="@${user.login}" class="avatar rounded-1" height="44" src="${user.avatar_url}&amp;s=88" width="44">
               </a>
             </div>
-          <div class="comment-widget-body">
-            <span><a class="comment-widget-user" href="${addr}${user.login}" target="_blank">${user.login}</a> </span>
-            <div class="comment-widget-content">${content}</div>
+            <div class="comment-widget-body">
+              <span><a class="comment-widget-user" href="${addr}${user.login}" target="_blank">${user.login}</a> </span>
+              <div class="comment-widget-content">${content}</div>
+            </div>
           </div>
           <br/>
           <div class="comment-widget-meta">
             <span class="comment-widget-title">${title}</span> | <span class="comment-widget-date">${time}</span>
           </div>
         </div>
-        `
-    $(recent_comments_target).append(res);
+        `;
+    (callback && typeof(callback) === "function") && callback(res);
+}
+
+var _getRecentCommentList = function(comment_list, i, render_count, total_count, comments, callback) {
+    if (render_count>=total_count || i>=comments.length) {
+        (callback && typeof(callback) === "function") && callback(comment_list);
+        return;
+    }
+    let comment = comments[i];
+    let content = markdown.toHTML(comment.body);
+    let title = comment.title;
+    let user = comment.user;
+    var timeagoInstance = timeago();
+    let time = timeagoInstance.format(comment.created_at);
+    let url = comment.html_url;
+    if (!content || content == '') {
+        i++;
+        _getRecentCommentList(comment_list, i, render_count, total_count, comments, callback);
+    }
+    if (!title) {
+        // Get title of issue
+        _getIssueByUrl(comment.issue_url, (issue)=>{
+            _renderRecentComment(user, issue.title, content, time, url, (item) => {
+                comment_list += item;
+                i++;
+                render_count++;
+                _getRecentCommentList(comment_list, i, render_count, total_count, comments, callback);
+            });
+        });
+    } else {
+        _renderRecentComment(user, issue.title, content, time, url, (item) => {
+            comment_list += item;
+            i++;
+            render_count++;
+            _getRecentCommentList(comment_list, i, render_count, total_count, comments, callback);
+        });
+    }
 }
 
 var _renderRecentCommentList = function(comments, count) {
-    var timeagoInstance = timeago();
+    let i = 0;
     let render_count = 0;
-    for (let i=0; render_count<count && i<comments.length; ++i) {
-        let comment = comments[i];
-        let content = markdown.toHTML(comment.body);
-        let title = comment.title;
-        let user = comment.user;
-        let time = timeagoInstance.format(comment.created_at);
-        let url = comment.html_url;
-        if (!content || content == '') continue;
-        if (!title) {
-            // Get title of issue
-            _getIssueByUrl(comment.issue_url, (issue)=>{
-                _renderRecentComment(user, issue.title, content, time, url);
-            })
-        } else {
-            _renderRecentComment(user, title, content, time, url);
-        }    
-        render_count++;
-    }
+    let comment_list = '';
+    _getRecentCommentList(comment_list, i, render_count, count, comments, (comment_list)=>{
+        $(recent_comments_target).append(comment_list);
+    })
 }
 
 var _renderHTML = function(params) {
