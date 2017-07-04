@@ -162,8 +162,6 @@
 
 .timeline-comment-header-text {
     max-width: 78%;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 .text-normal {
@@ -194,7 +192,6 @@
 
 .d-block {
     display: block !important;
-    border-bottom: 0px;
 }
 
 .markdown-body>*:last-child {
@@ -212,6 +209,7 @@
 .markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, .markdown-body dl, .markdown-body table, .markdown-body pre {
     margin-top: 0;
     margin-bottom: 16px;
+    padding-right: 20px;
 }
 
 .reorderable-task-lists .markdown-body ol:not(.contains-task-list) li, .reorderable-task-lists .markdown-body ul:not(.contains-task-list) li {
@@ -322,11 +320,10 @@
 }
 
 #recent-comments .comment-widget-avatar {
-  /*width: 25%;*/
   position: relative;
   min-height: 1px;
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 30px;
   float: left;
 }
 
@@ -337,7 +334,7 @@
 #recent-comments .comment-widget-body {
   position: relative;
   top: -5px;
-  left: -2px;
+  left: -15px;
 }
 
 #recent-comments .comment-widget-user{
@@ -353,16 +350,16 @@
 }
 
 #recent-comments .comment-widget-content {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 #recent-comments .comment-widget-content p{
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 #recent-comments .comment-widget-meta {  
   position: relative;
-  top: -30px;
+  top: -25px;
 }
 
 #recent-comments .comment-widget-title { 

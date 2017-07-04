@@ -184,7 +184,7 @@ var _renderComment = function(comment) {
 		<tbody class="d-block">
 		<tr class="d-block">
 		<td class="d-block comment-body markdown-body js-comment-body">
-		<p>${content}</p>
+		${content}
 		</td>
 		</tr>
 		</tbody>
