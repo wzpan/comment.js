@@ -117,7 +117,7 @@ parameters explaning:
 
 example:
 
-<div id="comment-thread"><p>You won't see this from README. Please visit <a href="http://wzpan.github.io/comment.js">the project homepage</a>.</p></div>
+<div id="comment-thread"></div>
 <div id="loading-spin"></div>
 
 ### 4. Recent Comment List
@@ -159,7 +159,7 @@ parameters explaning:
 
 example:
 
-<div id="recent-comments"><p>You won't see this from README. Please visit <a href="http://wzpan.github.io/comment.js">the project homepage</a>.</p></div>
+<div id="recent-comments"></div>
 
 ## How to contribute
 
