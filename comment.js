@@ -17,8 +17,6 @@
 // 02110-1301 USA
 // 
 
-// Get recent comment list from github issues
-// TODO
 'use strict';
 var type, username, repo, client_id, client_secret, no_comment, go_to_comment, btn_class, comments_target, recent_comments_target, loading_target;
 var github_addr = "https://github.com/";
