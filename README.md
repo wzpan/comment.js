@@ -1,6 +1,22 @@
 comment.js
 ===
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+**Table of Contents**
+
+- [comment.js](#commentjs)
+    - [Demo](#demo)
+    - [Dependencies](#dependencies)
+    - [How to use](#how-to-use)
+        - [0. Add stylesheets and JavaScript files](#0-add-stylesheets-and-javascript-files)
+        - [1. Create Github Repo](#1-create-github-repo)
+        - [2. Register an OAuth App](#2-register-an-oauth-app)
+        - [3. Comment Thread](#3-comment-thread)
+        - [4. Recent Comment List](#4-recent-comment-list)
+
+<!-- markdown-toc end -->
+
+
 Pure JavaScript to make a Disqus-like comment system. Use issue system of code hosting sites like Github/OSChina as the backend. Easily to use. Free for running.
 
 * [中文文档](http://www.hahack.com/codes/comment-js/#项目介绍)
@@ -102,14 +118,14 @@ parameters explaning:
 
 example:
 
-<div id="comment-thread"></div>
+<div id="comment-thread"><p>You won't see this from README. Please visit <a href="http://wzpan.github.io/comment.js">the project homepage</p>.</div>
 <div id="loading-spin"></div>
 
 ### 4. Recent Comment List
 
 In this section I will describe on how to generate a recent comment list for your site.
 
-Firstly, Write a div for placing the recent comment list.
+Firstly, write a div for placing the recent comment list.
 
 ``` html
 <div id="recent-comments"></div>
@@ -144,4 +160,4 @@ parameters explaning:
 
 example:
 
-<div id="recent-comments"></div>
+<div id="recent-comments"><p>You won't see this from README. Please visit <a href="http://wzpan.github.io/comment.js">the project homepage</p>.</div>
