@@ -336,7 +336,7 @@ var CompareDate = function(a, b) {
 	return ((new Date(d1)) > (new Date(d2)));
 }
 
-var getRecentCommentsList = function(params, callback) {
+var getRecentCommentsList = function(params) {
 	let count, user;
 	({type, user, repo, client_id, client_secret, count, recent_comments_target} = params)
 	username = user;
@@ -353,7 +353,7 @@ var getRecentCommentsList = function(params, callback) {
 	});
 }
 
-var getComments = function(params, callback) {
+var getComments = function(params) {
     let issue_title, issue_id, user;
 	({type, user, repo, client_id, client_secret, no_comment, go_to_comment, issue_title, issue_id, btn_class, comments_target, loading_target} = params)
 	comments_target = comments_target ? comments_target : '#comment-thread';
@@ -381,7 +381,6 @@ var getComments = function(params, callback) {
 													 comments_url: comments_url,
 													 issue_title: issue_title
 												 }); 
-												 (callback && typeof(callback) === "function") && callback(comments);
 												 return;
 											 });
 							 } else {
@@ -392,7 +391,6 @@ var getComments = function(params, callback) {
 									 comments_url: comments_url,
 									 issue_title: issue_title
 								 });
-								 (callback && typeof(callback) === "function") && callback(comments);
 								 return;
 							 }
 						 });
@@ -412,7 +410,6 @@ var getComments = function(params, callback) {
 								issue_title: issue_title
 							});
 							loading_target && spinner.spin();
-							(callback && typeof(callback) === "function") && callback(comments);
 							return;
 						});
 		})

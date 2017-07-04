@@ -16,7 +16,6 @@ comment.js
 
 <!-- markdown-toc end -->
 
-
 Pure JavaScript to make a Disqus-like comment system. Use issue system of code hosting sites like Github/OSChina as the backend. Easily to use. Free for running.
 
 * [中文文档](http://www.hahack.com/codes/comment-js/#项目介绍)
@@ -118,7 +117,7 @@ parameters explaning:
 
 example:
 
-<div id="comment-thread"><p>You won't see this from README. Please visit <a href="http://wzpan.github.io/comment.js">the project homepage</p>.</div>
+<div id="comment-thread"><p>You won't see this from README. Please visit <a href="http://wzpan.github.io/comment.js">the project homepage</a>.</p></div>
 <div id="loading-spin"></div>
 
 ### 4. Recent Comment List
@@ -160,4 +159,24 @@ parameters explaning:
 
 example:
 
-<div id="recent-comments"><p>You won't see this from README. Please visit <a href="http://wzpan.github.io/comment.js">the project homepage</p>.</div>
+<div id="recent-comments"><p>You won't see this from README. Please visit <a href="http://wzpan.github.io/comment.js">the project homepage</a>.</p></div>
+
+## How to contribute
+
+* A Github star outweights 1000 dollar(一星胜千元).
+* Pull requests are always welcome.
+* Your donation will encourage me to improve this project. Supports Alipay & Wechat Pay & BitCoin & LiteCoin & ETH.
+
+### Alipay ###
+
+![Alipay](http://7xj89i.com1.z0.glb.clouddn.com/ali_pay_01.jpg)
+
+### Wechat Pay ###
+
+![Wechat Pay](http://7xj89i.com1.z0.glb.clouddn.com/wechat_pay_02.png)
+
+### Coins ###
+
+* BTC: 39Es9K6EYfnDeCj6hQ1rN9wX1Y5fxZ8CZA
+* LTC: LYkWaXB7Ndu8s37zt1tjEu6goVYck1GxNr
+* ETH: 0x792ec91956a4976203804105d4e4d71954048d4e
