@@ -167,16 +167,6 @@ example:
 * Pull requests are always welcome.
 * Your donation will encourage me to improve this project. Supports Alipay & Wechat Pay & BitCoin & LiteCoin & ETH.
 
-### Alipay ###
-
-<img src="http://7xj89i.com1.z0.glb.clouddn.com/ali_pay_01.jpg" title="Donate 打赏" height="248px" width="164px" style="display:inherit;"/>
-
-### Wechat Pay ###
-
-<img src="http://7xj89i.com1.z0.glb.clouddn.com/wechat_pay_02.png" title="Donate 打赏" height="248px" width="164px" style="display:inherit;"/>
-
-### Coins ###
-
-* BTC: 39Es9K6EYfnDeCj6hQ1rN9wX1Y5fxZ8CZA
-* LTC: LYkWaXB7Ndu8s37zt1tjEu6goVYck1GxNr
-* ETH: 0x792ec91956a4976203804105d4e4d71954048d4e
+| Alipay | Wechat Pay | Coins |
+| ------ | --------- | ------ |
+| <img src="http://7xj89i.com1.z0.glb.clouddn.com/ali_pay_01.jpg" title="Alipay" style="display:inherit;"/> | <img src="http://7xj89i.com1.z0.glb.clouddn.com/wechat_pay_02.png" title="Wechat Pay" style="display:inherit;"/> | <ul><li>BTC: 39Es9K6EYfnDeCj6hQ1rN9wX1Y5fxZ8CZA</li><li>LTC: LYkWaXB7Ndu8s37zt1tjEu6goVYck1GxNr</li><li>ETH: 0x792ec91956a4976203804105d4e4d71954048d4e</li></ul> |
