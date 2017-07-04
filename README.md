@@ -13,6 +13,7 @@ comment.js
         - [2. Register an OAuth App](#2-register-an-oauth-app)
         - [3. Comment Thread](#3-comment-thread)
         - [4. Recent Comment List](#4-recent-comment-list)
+    - [How to contribute](#how-to-contribute)
 
 <!-- markdown-toc end -->
 
@@ -115,7 +116,7 @@ parameters explaning:
 * `client_id`(optional but recommended): the client id of your OAuth App.
 * `client_secret`(optional but recommended): the client secret of your OAuth App.
 
-example:
+example(You won't see this from README): 
 
 <div id="comment-thread"></div>
 <div id="loading-spin"></div>
@@ -157,13 +158,13 @@ parameters explaning:
 * `client_id`(optional but recommended): the client id of your OAuth App.
 * `client_secret`(optional but recommended): the client secret of your OAuth App.
 
-example:
+example(You won't see this from README):
 
 <div id="recent-comments"></div>
 
 ## How to contribute
 
-* A Github star outweights 1000 dollar(一星胜千元).
+* A Github star outweights 1000 dollars(一星胜千元).
 * Pull requests are always welcome.
 * Your donation will encourage me to improve this project. Supports Alipay & Wechat Pay & BitCoin & LiteCoin & ETH.
 
