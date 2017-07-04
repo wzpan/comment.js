@@ -1,6 +1,9 @@
 comment.js
 ===
 
+[![GitHub release](https://img.shields.io/github/release/wzpan/comment.js.svg)](https://github.com/wzpan/comment.js/releases)
+[![license](https://img.shields.io/github/license/wzpan/comment.js.svg)](https://github.com/wzpan/comment.js/blob/master/LICENSE)
+
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
 
