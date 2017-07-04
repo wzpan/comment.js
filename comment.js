@@ -55,6 +55,7 @@ var _getComment = function(params, callback) {
         success: function (page_comments) {
             if (!page_comments || page_comments.length <= 0) {
                 (callback && typeof(callback) === "function") && callback(comments);
+                callback = null;
                 return;
             }
             page_comments.forEach(function(comment){
@@ -67,7 +68,7 @@ var _getComment = function(params, callback) {
         },
         error: function(err) {
             (callback && typeof(callback) === "function") && callback(comments);
-            return;
+            callback = null;
         }
     });
 }
@@ -86,6 +87,7 @@ var _getCommentsUrl = function(params, callback) {
         success: function (issues) {
             if (!issues || issues.length <= 0) {
                 (callback && typeof(callback) === "function") && callback("", "");
+                callback = null;
                 return;
             }
             issues.forEach(function(issue){
@@ -93,7 +95,7 @@ var _getCommentsUrl = function(params, callback) {
                 if (issue.title && issue.title == issue_title) {
                     (callback && typeof(callback) === "function") && callback(issue.comments_url, issue);
                     found = true;
-                    return;
+                    callback = null;
                 }
             });
             if (!found) {
@@ -105,7 +107,7 @@ var _getCommentsUrl = function(params, callback) {
         },
         error: function() {
             (callback && typeof(callback) === "function") && callback("", "");
-            return;
+            callback = null;
         }
     });
 }
@@ -115,6 +117,7 @@ var _getIssue = function(issue_id, callback) {
     let issue_url = api_addr + username + '/' + repo + '/issues/' + issue_id;
     _getIssueByUrl(issue_url, (issue)=>{
         (callback && typeof(callback) === "function") && callback(issue);
+        callback = null;
     });
 }
 
@@ -128,15 +131,16 @@ var _getIssueByUrl = function(issue_url, callback) {
         success: function (issues) {
             if (!issues || issues.length <= 0) {
                 (callback && typeof(callback) === "function") && callback();
+                callback = null;
                 return;
             }
             let issue = issues;
             (callback && typeof(callback) === "function") && callback(issue);
-            return;
+            callback = null;
         },
         error: function() {
             (callback && typeof(callback) === "function") && callback();
-            return;
+            callback = null;
         }
     });
 }
@@ -214,11 +218,13 @@ var _renderRecentComment = function(user, title, content, time, url, callback) {
         </div>
         `;
     (callback && typeof(callback) === "function") && callback(res);
+    callback = null;
 }
 
 var _getRecentCommentList = function(comment_list, i, render_count, total_count, comments, callback) {
     if (render_count>=total_count || i>=comments.length) {
         (callback && typeof(callback) === "function") && callback(comment_list);
+        callback = null;
         return;
     }
     let comment = comments[i];
@@ -231,6 +237,7 @@ var _getRecentCommentList = function(comment_list, i, render_count, total_count,
     if (!content || content == '') {
         i++;
         _getRecentCommentList(comment_list, i, render_count, total_count, comments, callback);
+        return;
     }
     if (!title) {
         // Get title of issue
@@ -243,7 +250,7 @@ var _getRecentCommentList = function(comment_list, i, render_count, total_count,
             });
         });
     } else {
-        _renderRecentComment(user, issue.title, content, time, url, (item) => {
+        _renderRecentComment(user, title, content, time, url, (item) => {
             comment_list += item;
             i++;
             render_count++;
@@ -316,11 +323,11 @@ var _getRecentIssues = function(params, callback) {
                 issues = issues.sort('created_at').reverse().slice(0, 5);
             }
             (callback && typeof(callback) === "function") && callback(issues);
-            return;
+            callback = null;
         },
         error: function (err) {
             (callback && typeof(callback) === "function") && callback();
-            return;
+            callback = null;
         }
     });
 }
@@ -341,11 +348,11 @@ var _getRecentComments = function(params, callback) {
             }
             
             (callback && typeof(callback) === "function") && callback(comments);
-            return;
+            callback = null;
         },
         error: function (err) {
             (callback && typeof(callback) === "function") && callback();
-            return;
+            callback = null;
         }
     });
 }
