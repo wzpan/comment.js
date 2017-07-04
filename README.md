@@ -169,11 +169,11 @@ example:
 
 ### Alipay ###
 
-![Alipay](http://7xj89i.com1.z0.glb.clouddn.com/ali_pay_01.jpg)
+<img src="http://7xj89i.com1.z0.glb.clouddn.com/ali_pay_01.jpg" title="Donate 打赏" height="164px" width="164px" style="display:inherit;"/>
 
 ### Wechat Pay ###
 
-![Wechat Pay](http://7xj89i.com1.z0.glb.clouddn.com/wechat_pay_02.png)
+<img src="http://7xj89i.com1.z0.glb.clouddn.com/wechat_pay_02.png" title="Donate 打赏" height="164px" width="164px" style="display:inherit;"/>
 
 ### Coins ###
 
