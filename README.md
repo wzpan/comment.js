@@ -38,6 +38,8 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 
 ## How to use
 
+> For people using Hexo as static blog generator, they can try a theme [hexo-theme-freemind](http://github.com/wzpan/hexo-theme-freemind) with comment.js as the default comment system that works out of box.
+
 ### 0. Add stylesheets and JavaScript files
 
 ``` html
