@@ -179,6 +179,7 @@ var _getRecentCommentList = function _getRecentCommentList(comment_list, i, rend
         return;
     }
     var comment = comments[i];
+    if (!comment) return;
     var content = markdown.toHTML(comment.body);
     var title = comment.title;
     var user = comment.user;
