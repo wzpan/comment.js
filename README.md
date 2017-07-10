@@ -52,6 +52,12 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
 <script src="path_to_comment_js/comment.js"></script>
+
+<!-- for IE support -->
+<!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+<![endif]-->
 ```
 
 ### 1. Create Github Repo
