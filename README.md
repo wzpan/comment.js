@@ -16,6 +16,7 @@ comment.js
         - [2. Register an OAuth App](#2-register-an-oauth-app)
         - [3. Comment Thread](#3-comment-thread)
         - [4. Recent Comment List](#4-recent-comment-list)
+    - [Browser support](#browser-support)
     - [How to contribute](#how-to-contribute)
 
 <!-- markdown-toc end -->
@@ -172,6 +173,15 @@ parameters explaning:
 example(You won't see this from README):
 
 <div id="recent-comments"></div>
+
+## Browser support
+
+All of the above browsers should support using comment.js, although I haven't fully test all of them.
+
+* [x] Chrome
+* [x] Safari
+* [x] Firefox
+* [x] IE8+
 
 ## How to contribute
 
