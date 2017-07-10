@@ -181,7 +181,9 @@ All of the above browsers should support using comment.js, although I haven't fu
 * [x] Chrome
 * [x] Safari
 * [x] Firefox
-* [x] IE8+
+* IE8+
+  - [x] comment thread
+  - [ ] recent comment list
 
 ## How to contribute
 
