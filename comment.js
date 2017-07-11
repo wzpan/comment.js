@@ -377,7 +377,7 @@ var getRecentCommentsList = function (params) {
         recentList = recentList.concat(issues);
         _getRecentComments(params, comments => {
             recentList = recentList.concat(comments);
-            recentList = recentList.sort(CompareDate);
+            recentList = recentList.sort(CompareDate).reverse();
             _renderRecentCommentList(recentList, count);
         });
     });
