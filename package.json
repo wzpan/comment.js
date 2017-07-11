@@ -1,0 +1,31 @@
+{
+  "name": "comment.js",
+  "version": "1.0.6",
+  "description": "A tiny comment system based on Github issue comments.",
+  "main": "comment.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wzpan/comment.js.git"
+  },
+  "keywords": [
+    "comment",
+    "github",
+    "disqus"
+  ],
+  "author": "Joseph Pan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wzpan/comment.js/issues"
+  },
+  "testling": {
+    "browsers": [
+      "ie6", "ie7", "ie8", "ie9",
+      "firefox/15", "chrome/22", "opera/12", "safari/5.1"
+    ],
+    "html": "test/testling.html"
+  },
+  "homepage": "http://wzpan.github.io/comment.js"
+}

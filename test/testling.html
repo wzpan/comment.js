@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>comment.js tests</title>
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-sham.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="http://onmw7y6f4.bkt.clouddn.com/comment-v1.0.4.1.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+  <script src="../comment.js"></script>
+  <script type="text/javascript">
+    var opt = {
+			 type: "github",
+			 user: "wzpan",
+			 repo: "comment.js",
+			 no_comment: "No comments yet. Press the button and go to comment now!",
+			 go_to_comment: "Go to comment",
+			 issue_id: "1",
+			 btn_class: "btn btn-primary",
+			 comments_target: "#comment-thread",
+			 loading_target: "#loading-spin",
+			 client_id: "1eb35434de75c06a513f",
+			 client_secret: "6e4193f8ecd619cdfac2b1aa16b3663fe18d2e90"
+		 };
+	getComments(opt);
+    var opt2 = {
+			 type: "github",
+			 user: "wzpan",
+			 repo: "comment.js",
+			 recent_comments_target: "#recent-comments",
+			 count: 5,
+			 client_id: "1eb35434de75c06a513f",
+			 client_secret: "6e4193f8ecd619cdfac2b1aa16b3663fe18d2e90"
+		 };
+		 getRecentCommentsList(opt2);
+  </script>
+</head>
+<body>
+  <h2>Comment Thread</h2>
+  <div id="comment-thread"></div>
+  <div id="loading-spin"></div>
+  <h2>Recent Comment List</h2>
+  <div id="recent-comments"></div>
+</body>
+</html>
