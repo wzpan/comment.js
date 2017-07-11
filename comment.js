@@ -311,6 +311,12 @@ var _renderHTML = function (params) {
     $(comments_target).append(res);
 };
 
+var CompareDate = function (a, b) {
+    let d1 = a['created_at'].replace('T', ' ').replace('Z', '').replace(/-/g, "\/");
+    let d2 = b['created_at'].replace('T', ' ').replace('Z', '').replace(/-/g, "\/");
+    return new Date(d1) > new Date(d2);
+};
+
 var _getRecentIssues = function (params, callback) {
     let count;
     ({ count } = params);
@@ -323,7 +329,7 @@ var _getRecentIssues = function (params, callback) {
         data: client_id && client_secret ? `client_id=${ client_id }&client_secret=${ client_secret }` : '',
         success: function (issues) {
             if (issues.length > count) {
-                issues = issues.sort('created_at').reverse().slice(0, 5);
+                issues = issues.sort(CompareDate).reverse().slice(0, 5);
             }
             callback && typeof callback === "function" && callback(issues);
             callback = null;
@@ -347,7 +353,7 @@ var _getRecentComments = function (params, callback) {
         data: client_id && client_secret ? `client_id=${ client_id }&client_secret=${ client_secret }` : '',
         success: function (comments) {
             if (comments.length > count) {
-                comments = comments.sort('created_at').reverse().slice(0, 5);
+                comments = comments.sort(CompareDate).reverse().slice(0, 5);
             }
 
             callback && typeof callback === "function" && callback(comments);
@@ -358,12 +364,6 @@ var _getRecentComments = function (params, callback) {
             callback = null;
         }
     });
-};
-
-var CompareDate = function (a, b) {
-    let d1 = a['created_at'].replace('T', ' ').replace('Z', '').replace(/-/g, "\/");
-    let d2 = b['created_at'].replace('T', ' ').replace('Z', '').replace(/-/g, "\/");
-    return new Date(d1) > new Date(d2);
 };
 
 var getRecentCommentsList = function (params) {
