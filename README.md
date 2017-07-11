@@ -55,7 +55,7 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 <script src="path_to_comment_js/comment.js"></script>
 
 <!-- for IE support -->
-<!--[if lt IE 11]>
+<!--[if IE]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>
