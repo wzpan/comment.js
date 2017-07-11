@@ -185,8 +185,6 @@ All of the above browsers should support using comment.js, although I haven't fu
 * [x] Firefox
 * [x] IE8+
 
-[![browser support](http://ci.testling.com/wzpan/comment.js.png)](http://ci.testling.com/wzpan/comment.js)
-
 ## How to contribute
 
 * A Github star outweights 1000 dollars(一星胜千元).
