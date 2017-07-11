@@ -269,7 +269,7 @@ var _getRecentIssues = function _getRecentIssues(params, callback) {
 
     var api_addr = type == 'github' ? github_api_addr : oschina_api_addr;
     $.ajax({
-        url: api_addr + username + '/' + repo + '/issues\?per_page\=100\&sort\=created\&direction\=desc',
+        url: api_addr + username + '/' + repo + '/issues?per_page=100&sort=created&direction=desc',
         dataType: 'json',
         cache: false,
         crossDomain: true,
@@ -298,7 +298,7 @@ var _getRecentComments = function _getRecentComments(params, callback) {
 
     var api_addr = type == 'github' ? github_api_addr : oschina_api_addr;
     $.ajax({
-        url: api_addr + username + '/' + repo + '/issues/comments\?per_page\=100\&sort\=created\&direction\=desc',
+        url: api_addr + username + '/' + repo + '/issues/comments?per_page=100&sort=created&direction=desc',
         dataType: 'json',
         cache: false,
         crossDomain: true,
