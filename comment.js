@@ -329,7 +329,7 @@ var _getRecentIssues = function (params, callback) {
         data: client_id && client_secret ? `client_id=${ client_id }&client_secret=${ client_secret }` : '',
         success: function (issues) {
             if (issues.length > count) {
-                issues = issues.sort(CompareDate).reverse().slice(0, 5);
+                issues = issues.sort(CompareDate).slice(0, 5);
             }
             callback && typeof callback === "function" && callback(issues);
             callback = null;
@@ -353,7 +353,7 @@ var _getRecentComments = function (params, callback) {
         data: client_id && client_secret ? `client_id=${ client_id }&client_secret=${ client_secret }` : '',
         success: function (comments) {
             if (comments.length > count) {
-                comments = comments.sort(CompareDate).reverse().slice(0, 5);
+                comments = comments.sort(CompareDate).slice(0, 5);
             }
 
             callback && typeof callback === "function" && callback(comments);
