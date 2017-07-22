@@ -27,8 +27,8 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 
 ## Demo
 
-* [Demo Comment Thread](http://wzpan.github.io/comment.js#comment-thread)
-* [Demo Recent Comment List](http://wzpan.github.io/comment.js#recent-comments)
+* [Demo Comment Thread](http://hahack.com/comment.js#comment-thread)
+* [Demo Recent Comment List](http://hahack.com/comment.js#recent-comments)
 
 ## Dependencies
 
