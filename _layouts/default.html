@@ -15,10 +15,10 @@
 		
 		<link rel="stylesheet" href="http://onmw7y6f4.bkt.clouddn.com/comment-v1.0.4.1.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.3.1/markdown-it.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
-		<script src="http://onmw7y6f4.bkt.clouddn.com/comment-v1.0.7.js"></script>
+		<script src="http://onmw7y6f4.bkt.clouddn.com/comment-v1.0.7.1.js"></script>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
@@ -135,6 +135,20 @@
 		 };
 		 getRecentCommentsList(opt2);
 		</script>
-        <script>hljs.initHighlightingOnLoad();</script>
+        <script type="text/javascript">
+          marked.setOptions({
+          highlight: function (code, lang) {
+             return hljs.highlightAuto(code).value;
+          }
+          });
+          function Highlighting(){
+            var markdowns = document.getElementsByClassName('markdown');
+            for(var i=0;i<markdowns.length;i++){
+               if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+            }
+          }
+          window.addEventListener('DOMContentLoaded', Highlighting, false);
+          window.addEventListener('load', Highlighting, false);
+        </script>
 	</body>
 </html>

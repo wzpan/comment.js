@@ -33,8 +33,9 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 ## Dependencies
 
 * [jQuery](https://jquery.com/) - for making Ajax requests and manipulating DOM.
-* [markdown-it](https://github.com/markdown-it/markdown-it) - for rendering markdown.
+* [marked](https://github.com/chjj/marked) - for rendering markdown.
 * [timeago.js](https://github.com/hustcc/timeago.js) - for formatting time labels.
+* [highlight.js](http://highlightjs.org) - for syntax highlighting(optional).
 * [spin](https://github.com/fgnass/spin.js) - for displaying a spinning indicator(optional).
 
 ## How to use
@@ -55,9 +56,32 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 
 <!-- javascripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js">/script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.3.1/markdown-it.min.js">/script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
+
+<!-- loading spin indicator(optional) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+
+<!-- syntax highlighting(optional) -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script type="text/javascript">
+  marked.setOptions({
+  highlight: function (code, lang) {
+     return hljs.highlightAuto(code).value;
+  }
+  });
+  function Highlighting(){
+    var markdowns = document.getElementsByClassName('markdown');
+    for(var i=0;i<markdowns.length;i++){
+       if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+    }
+  }
+  window.addEventListener('DOMContentLoaded', Highlighting, false);
+  window.addEventListener('load', Highlighting, false);
+</script>
+
+<!-- comment.js -->
 <script src="path_to_comment_js/comment.js"></script>
 ```
 

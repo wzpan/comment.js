@@ -20,7 +20,6 @@
 'use strict';
 
 var type, username, repo, client_id, client_secret, no_comment, go_to_comment, btn_class, comments_target, recent_comments_target, loading_target;
-var md = window.markdownit();
 var github_addr = "https://github.com/";
 var github_api_addr = "https://api.github.com/repos/";
 var oschina_addr = "http://git.oschina.net/";
@@ -150,7 +149,7 @@ var _getIssueByUrl = function (issue_url, callback) {
 var _renderComment = function (comment) {
     var timeagoInstance = timeago();
     let user = comment.user;
-    let content = md.render(comment.body);
+    let content = marked(comment.body);
     let ago = timeagoInstance.format(comment.created_at);
     let current_user = user.login == username ? "current-user" : "";
     let addr = type == 'github' ? github_addr : oschina_addr;
@@ -231,7 +230,7 @@ var _getRecentCommentList = function (comment_list, i, render_count, total_count
     }
     let comment = comments[i];
     if (!comment) return;
-    let content = md.render(comment.body);
+    let content = marked(comment.body);
     let title = comment.title;
     let user = comment.user;
     var timeagoInstance = timeago();
