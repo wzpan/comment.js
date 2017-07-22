@@ -33,7 +33,7 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 ## Dependencies
 
 * [jQuery](https://jquery.com/) - for making Ajax requests and manipulating DOM.
-* [markdown-js](https://github.com/evilstreak/markdown-js) - for rendering markdown.
+* [markdown-it](https://github.com/markdown-it/markdown-it) - for rendering markdown.
 * [timeago.js](https://github.com/hustcc/timeago.js) - for formatting time labels.
 * [spin](https://github.com/fgnass/spin.js) - for displaying a spinning indicator(optional).
 
@@ -55,7 +55,7 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 
 <!-- javascripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js">/script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js">/script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.3.1/markdown-it.min.js">/script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
 <script src="path_to_comment_js/comment.js"></script>
