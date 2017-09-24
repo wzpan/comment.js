@@ -55,7 +55,7 @@ Pure JavaScript to make a Disqus-like comment system. Use issue system of code h
 <![endif]-->
 
 <!-- javascripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js">/script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
 
