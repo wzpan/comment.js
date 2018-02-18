@@ -211,7 +211,7 @@ All of the above browsers should support using comment.js, although I haven't fu
 
 * A Github star outweights 1000 dollars(一星胜千元).
 * Pull requests are always welcome.
-* Your donation will encourage me to improve this project. Supports Alipay & Wechat Pay & BitCoin & LiteCoin & ETH.
+* Your donation will encourage me to improve this project. Supports Alipay & Wechat Pay.
 
 | Alipay | Wechat Pay |
 | ------ | --------- |
