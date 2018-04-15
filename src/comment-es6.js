@@ -414,7 +414,7 @@ var getComments = function (params) {
     ({ type, user, repo, client_id, client_secret, no_comment, go_to_comment, issue_title, issue_id, btn_class, comments_target, loading_target } = params);
     comments_target = comments_target ? comments_target : '#comment-thread';
     username = user;
-    var spinner = new Spinner(spinOpts);
+    if (loading_target) var spinner = new Spinner(spinOpts);
     var timeagoInstance = timeago();
     var comments_url;
     var comments = new Array();
