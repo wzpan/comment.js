@@ -315,7 +315,7 @@ var _renderHTML = function (params) {
     if (!comments_url) {
         issue_url = `${ addr }/${ username }/${ repo }/issues/new?title=${ issue_title }#issue_body`;
     } else {
-        issue_url = comments_url.replace(api_addr, addr).replace('comments', '') + '#new_comment_field';
+        issue_url = comments_url.replace(api_addr, addr).replace(/(.*)comments/, '$1') + '#new_comment_field';
     }
     let res = `
         <p class="goto-comment">
