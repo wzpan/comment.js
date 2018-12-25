@@ -254,7 +254,7 @@ var _renderHTML = function _renderHTML(params) {
     if (!comments_url) {
         issue_url = addr + "/" + username + "/" + repo + "/issues/new?title=" + issue_title + "#issue_body";
     } else {
-        issue_url = comments_url.replace(api_addr, addr).replace('comments', '') + '#new_comment_field';
+        issue_url = comments_url.replace(api_addr, addr).replace(/(.*)comments/, '$1') + '#new_comment_field';
     }
     var res = "\n        <p class=\"goto-comment\">\n        <a href=\"" + issue_url + "\" class=\"" + btn_class + "\" target=\"_blank\">" + go_to_comment + "</a>\n        </p>\n        ";
     $(comments_target).append(res);
