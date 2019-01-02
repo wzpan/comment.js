@@ -263,7 +263,7 @@ var _renderHTML = function _renderHTML(params) {
 var CompareDate = function CompareDate(a, b) {
     var d1 = a['created_at'].replace('T', ' ').replace('Z', '').replace(/-/g, "\/");
     var d2 = b['created_at'].replace('T', ' ').replace('Z', '').replace(/-/g, "\/");
-    return new Date(d1) > new Date(d2);
+    return new Date(d1) < new Date(d2);
 };
 
 var _getRecentIssues = function _getRecentIssues(params, callback) {
@@ -279,11 +279,7 @@ var _getRecentIssues = function _getRecentIssues(params, callback) {
         data: client_id && client_secret ? "client_id=" + client_id + "&client_secret=" + client_secret : '',
         success: function success(issues) {
             if (issues.length > count) {
-                if (navigator.userAgent.indexOf("MSIE") != -1 || navigator.userAgent.indexOf("Edge") != -1 || !!document.documentMode == true) {
-                    issues = issues.sort(CompareDate).slice(0, 5);
-                } else {
-                    issues = issues.sort(CompareDate).reverse().slice(0, 5);
-                }
+                issues = issues.sort(CompareDate).slice(0, 5);
             }
             callback && typeof callback === "function" && callback(issues);
             callback = null;
@@ -308,11 +304,7 @@ var _getRecentComments = function _getRecentComments(params, callback) {
         data: client_id && client_secret ? "client_id=" + client_id + "&client_secret=" + client_secret : '',
         success: function success(comments) {
             if (comments.length > count) {
-                if (navigator.userAgent.indexOf("MSIE") != -1 || navigator.userAgent.indexOf("Edge") != -1 || !!document.documentMode == true) {
-                    comments = comments.sort(CompareDate).slice(0, 5);
-                } else {
-                    comments = comments.sort(CompareDate).reverse().slice(0, 5);
-                }
+                comments = comments.sort(CompareDate).slice(0, 5);
             }
 
             callback && typeof callback === "function" && callback(comments);
@@ -344,11 +336,7 @@ var getRecentCommentsList = function getRecentCommentsList(params) {
         recentList = recentList.concat(issues);
         _getRecentComments(params, function (comments) {
             recentList = recentList.concat(comments);
-            if (navigator.userAgent.indexOf("MSIE") != -1 || navigator.userAgent.indexOf("Edge") != -1 || !!document.documentMode == true) {
-                recentList = recentList.sort(CompareDate);
-            } else {
-                recentList = recentList.sort(CompareDate).reverse();
-            }
+            recentList = recentList.sort(CompareDate);
             _renderRecentCommentList(recentList, count);
         });
     });
