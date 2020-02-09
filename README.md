@@ -1,10 +1,10 @@
 comment.js
 ===
 
-This project is archived and will no more be mantained! Please use [gitalk](https://github.com/gitalk/gitalk) or [gitment](https://github.com/imsun/gitment) instead.
-
 [![GitHub release](https://img.shields.io/github/release/wzpan/comment.js.svg)](https://github.com/wzpan/comment.js/releases)
 [![license](https://img.shields.io/github/license/wzpan/comment.js.svg)](https://github.com/wzpan/comment.js/blob/master/LICENSE)
+
+IMPORTANT!!! This project is archived and will no more be mantained! Please use [gitalk](https://github.com/gitalk/gitalk) or [gitment](https://github.com/imsun/gitment) instead.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
